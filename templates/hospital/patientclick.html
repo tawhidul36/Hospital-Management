@@ -1,0 +1,41 @@
+{% extends 'hospital/homebase.html' %}
+
+{% block content %}
+<br><br>
+
+<div class="jumbotron" style="margin-bottom:0px;">
+  <h1 class="display-4" style="text-align:center;">
+    {% if request.user.is_authenticated %}
+      Hello, {{ request.user.first_name }}
+    {% else %}
+      Hello, Patient
+    {% endif %}
+  </h1>
+  
+  <p class="lead">Welcome to Hospital Management System.</p>
+  <hr class="my-4">
+
+  {% if request.user.is_authenticated %}
+    {% if is_patient and account_approved %}
+      <p>You are already logged in!</p>
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-lg">Logout</button>
+      </form>
+    {% else %}
+      <div class="alert alert-info">
+        Your account is pending approval. Please check back later.
+        <form action="{% url 'logout' %}" method="post" class="mt-2">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-warning btn-sm">Logout</button>
+        </form>
+      </div>
+    {% endif %}
+  {% else %}
+    <p class="lead">
+      <a class="btn btn-danger btn-lg" href="{% url 'patientsignup' %}" role="button">Register Your Account</a>
+      <a class="btn btn-success btn-lg" href="{% url 'patientlogin' %}" role="button">Login</a>
+    </p>
+  {% endif %}
+</div>
+{% endblock content %}

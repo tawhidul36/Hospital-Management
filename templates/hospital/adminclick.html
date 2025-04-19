@@ -1,0 +1,27 @@
+{% extends 'hospital/homebase.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="jumbotron" style="margin-bottom:0px;">
+  <h1 class="display-4" style="text-align:center;">Hello, Admin</h1>
+  <p class="lead">Welcome to Hospital Management System.</p>
+  <hr class="my-4">
+  
+  {% if request.user.is_authenticated and is_admin %}
+    <div class="alert alert-info">
+      You are already logged in as Admin. 
+      <a href="{% url 'admin-dashboard' %}" class="alert-link">Go to Dashboard</a> or 
+      <a href="{% url 'logout' %}" class="alert-link">Logout</a>
+    </div>
+  {% else %}
+    <p class="lead">
+      <a class="btn btn-danger btn-lg" href="{% url 'adminsignup' %}" role="button">Sign Up</a>
+      <a class="btn btn-success btn-lg" href="{% url 'adminlogin' %}" role="button">Login</a>
+    </p>
+  {% endif %}
+</div>
+
+{% endblock content %}
