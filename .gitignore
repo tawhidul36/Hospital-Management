@@ -5,7 +5,7 @@ __pycache__/
 *.pyd
 
 # Virtual environment
-venv/
+venv
 env/
 myenv/
 .venv/
@@ -15,6 +15,7 @@ myenv/
 db.sqlite3
 media/
 staticfiles/
+static/images/
 
 # Environment variables
 .env
