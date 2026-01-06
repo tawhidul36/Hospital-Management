@@ -6,7 +6,6 @@ __pycache__/
 
 # Virtual environment
 venv/
-env/
 myenv/
 .venv/
 
@@ -17,7 +16,11 @@ media/
 staticfiles/
 
 # Environment variables
+env/.env
 .env
+.env.local
+.env.*.local
+
 
 # VS Code
 .vscode/
