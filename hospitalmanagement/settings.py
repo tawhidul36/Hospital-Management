@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
         'hospital',
         'widget_tweaks',
+        'arrhythmia_detection',
 ]
 
 MIDDLEWARE = [

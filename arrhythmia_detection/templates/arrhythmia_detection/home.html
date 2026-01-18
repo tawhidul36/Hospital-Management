@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Detection of Shockable and Non-Shockable Arrhythmia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <i data-lucide="heart" class="h-8 w-8 text-red-500 mr-3"></i>
+                    <h1 class="text-2xl font-bold text-gray-900">CardioDetect AI</h1>
+                </div>
+                <div class="text-2xl text-gray-500">
+                    Hybrid Pooling Technology
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-5xl font-extrabold mb-6">
+                    Early Detection of Arrhythmia
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto mb-8 opacity-90">
+                    Advanced AI-powered analysis of ECG images using hybrid pooling neural networks for accurate arrhythmia classification and life-saving early detection.
+                </p>
+                <div class="flex justify-center space-x-4 text-sm">
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">AI-Powered</span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">High Accuracy</span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">Instant Results</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">Upload Your ECG Image</h3>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Select an ECG image for instant analysis. Our AI will classify the arrhythmia type with high confidence.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-6">
+                <h3 class="text-2xl font-bold text-white text-center">
+                    <i data-lucide="upload" class="inline h-6 w-6 mr-2"></i>
+                    Upload ECG Image for Analysis
+                </h3>
+            </div>
+
+            <div class="px-8 py-8">
+                <form method="post" enctype="multipart/form-data" class="space-y-6">
+                    {% csrf_token %}
+
+                    <!-- File Upload Area -->
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors duration-300">
+                        <i data-lucide="image" class="mx-auto h-12 w-12 text-gray-400 mb-4"></i>
+                        <div class="mb-4">
+                            <label for="image" class="cursor-pointer">
+                                <span class="text-lg font-medium text-gray-900">Choose ECG Image</span>
+                                <span class="text-sm text-gray-500 block">PNG, JPG, JPEG up to 10MB</span>
+                            </label>
+                            <input type="file" name="image" id="image" accept="image/*" required
+                                   class="hidden" onchange="handleFileSelect(this)">
+                        </div>
+                        <div id="file-name" class="text-sm text-gray-600"></div>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div id="image-preview" class="hidden mt-6">
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4 text-center">Image Preview</h4>
+                        <div class="flex justify-center">
+                            <div class="relative">
+                                <img id="preview-img" src="" alt="ECG Preview" class="max-w-full h-auto max-h-96 rounded-lg shadow-lg border-4 border-white">
+                                <div class="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">
+                                    Preview
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-gray-600">This is how your ECG image will be analyzed</p>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                            class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                        <i data-lucide="zap" class="inline h-5 w-5 mr-2"></i>
+                        Analyze Arrhythmia
+                    </button>
+                </form>
+
+                <!-- Features -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <i data-lucide="brain" class="mx-auto h-10 w-10 text-indigo-500 mb-3"></i>
+                        <h4 class="font-semibold text-gray-900 mb-2">AI-Powered</h4>
+                        <p class="text-sm text-gray-600">Advanced neural network with hybrid pooling</p>
+                    </div>
+                    <div class="text-center">
+                        <i data-lucide="clock" class="mx-auto h-10 w-10 text-green-500 mb-3"></i>
+                        <h4 class="font-semibold text-gray-900 mb-2">Fast Results</h4>
+                        <p class="text-sm text-gray-600">Instant analysis in seconds</p>
+                    </div>
+                    <div class="text-center">
+                        <i data-lucide="shield" class="mx-auto h-10 w-10 text-blue-500 mb-3"></i>
+                        <h4 class="font-semibold text-gray-900 mb-2">High Accuracy</h4>
+                        <p class="text-sm text-gray-600">Trained on extensive medical datasets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <section class="mt-20">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">How It Works</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-indigo-600">1</span>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Upload Image</h4>
+                    <p class="text-gray-600">Select your ECG image in PNG, JPG, or JPEG format</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-purple-600">2</span>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">AI Analysis</h4>
+                    <p class="text-gray-600">Our hybrid pooling neural network analyzes the ECG pattern</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-green-600">3</span>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Get Results</h4>
+                    <p class="text-gray-600">Receive instant classification with confidence score</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Classes Section -->
+        <section class="mt-20 bg-gray-50 rounded-2xl p-8">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-8">Arrhythmia Classes Detected</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="bg-white rounded-lg p-4 shadow-md text-center">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">L</div>
+                    <div class="text-sm font-medium text-gray-900">Left Bundle Branch Block</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-md text-center">
+                    <div class="text-2xl font-bold text-green-600 mb-2">N</div>
+                    <div class="text-sm font-medium text-gray-900">Normal</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-md text-center">
+                    <div class="text-2xl font-bold text-purple-600 mb-2">P</div>
+                    <div class="text-sm font-medium text-gray-900">Paced</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-md text-center">
+                    <div class="text-2xl font-bold text-orange-600 mb-2">R</div>
+                    <div class="text-sm font-medium text-gray-900">Right Bundle Branch Block</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-md text-center">
+                    <div class="text-2xl font-bold text-red-600 mb-2">V</div>
+                    <div class="text-sm font-medium text-gray-900">Ventricular Premature Beat</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">CardioDetect AI</h4>
+                    <p class="text-gray-400">Advanced arrhythmia detection using cutting-edge AI technology.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Technology</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Hybrid Pooling Neural Networks</li>
+                        <li>TensorFlow Framework</li>
+                        <li>Django Backend</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Important Notice</h4>
+                    <p class="text-gray-400 text-sm">
+                        This tool is for research and educational purposes. Always consult medical professionals for clinical diagnosis.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 CardioDetect AI. Early Detection of Shockable and Non-Shockable Arrhythmia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleFileSelect(input) {
+            const file = input.files[0];
+            const fileName = file?.name || '';
+            document.getElementById('file-name').textContent = fileName ? `Selected: ${fileName}` : '';
+
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewImg = document.getElementById('preview-img');
+                    const previewDiv = document.getElementById('image-preview');
+
+                    previewImg.src = e.target.result;
+                    previewDiv.classList.remove('hidden');
+
+                    // Smooth scroll to preview
+                    previewDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                };
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('image-preview').classList.add('hidden');
+            }
+        }
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

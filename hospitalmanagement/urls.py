@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from hospital import views
 from django.contrib.auth.views import LoginView,LogoutView
 
@@ -98,6 +98,10 @@ urlpatterns +=[
 
 ]
 
-#Developed By : sumit kumar
-#facebook : fb.com/sumit.luv
+
+urlpatterns += [
+    path('arrhythmia/', include('arrhythmia_detection.urls')),
+]
+
+
 #Youtube :youtube.com/lazycoders
