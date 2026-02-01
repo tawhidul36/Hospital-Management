@@ -35,7 +35,7 @@ python manage.py createsuperuser
 python manage.py runserver 8000
 
 # 8️⃣ Navigate to AI service folder
-cd ai_service
+cd arrhythmia_api
 
 # 9️⃣ Install AI service dependencies
 pip install -r requirements.txt
@@ -43,7 +43,17 @@ pip install -r requirements.txt
 # 🔟 Start FastAPI AI server
 uvicorn main:app --reload --port 8001
 
-# 1️⃣1️⃣ Open your browser to check:
+# Docker Setup:
+docker pull tawhid36/hospital-management-django:latest
+docker pull tawhid36/hospital-management-fastapi:latest
+
+# Run Containers
+docker run -d -p 8000:8000 tawhid36/hospital-management-django:latest
+docker run -d -p 8001:8001 tawhid36/hospital-management-fastapi:latest
+
+
+# Open your browser to check:
+
 # Django Admin: http://127.0.0.1:8000/admin/
 # Django Frontend: http://127.0.0.1:8000/
 # FastAPI AI endpoints: http://127.0.0.1:8001/docs
