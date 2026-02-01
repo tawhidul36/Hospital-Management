@@ -6,15 +6,17 @@
 <br>
 <br>
 
-<div class="jumbotron" style="margin-bottom:0px;">
-  <h1 class="display-4" style="text-align:center;">Hello, Patient</h1>
-  <p class="lead">Welcome to Hospital Management System.</p>
-  <hr class="my-4">
-
-  <p class="lead">
-    <a class="btn btn-danger btn-lg" href="/patientsignup" role="button">Register Your Account</a>
-    <a class="btn btn-success btn-lg" href="/patientlogin" role="button">Login</a>
-  </p>
+<div class="auth-wrapper">
+  <div class="auth-card text-center" style="max-width: 600px; padding: 40px;">
+    <h1 class="display-4 text-primary font-weight-bold mb-3">Hello, Patient</h1>
+    <hr class="my-4">
+    <div class="d-flex justify-content-center gap-3">
+      <a class="btn btn-danger btn-lg mr-3" href="/patientsignup" role="button" style="border-radius: 50px;">Register
+        Account</a>
+      <a class="btn btn-primary btn-lg" href="/patientlogin" role="button"
+        style="border-radius: 50px; width: 150px;">Login</a>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}

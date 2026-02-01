@@ -4,58 +4,46 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/modern_ui.css' %}">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-  <style type="text/css">
-    .bs-example {
-      margin: 0px;
-
-    }
-
-    .navbar-brand {
-      font-size: 20px;
-      font-family: sans-serif;
-
-    }
-  </style>
 </head>
 
 <body>
 
-
-
-  <div class="bs-example">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:#337AB7;">
-      <a href="/" class="navbar-brand">Hospital Management</a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="fa fa-heartbeat text-danger mr-2"></i>Hospital Management
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars text-primary"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-        <div class="navbar-nav">
-
-          
-
-
-        </div>
-
-        <div class="navbar-nav">
-          <a href="/adminclick" class="nav-item nav-link">Admin</a>
-          <a href="/doctorclick" class="nav-item nav-link">Doctor</a>
-          <a href="/patientclick" class="nav-item nav-link">Patient</a>
-          <a href="/contactus" class="nav-item nav-link">Contact Us</a>
-        </div>
-
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/adminclick" class="nav-link"><i class="fa fa-user-secret mr-1"></i> Admin</a>
+          </li>
+          <li class="nav-item">
+            <a href="/doctorclick" class="nav-link"><i class="fa fa-user-md mr-1"></i> Doctor</a>
+          </li>
+          <li class="nav-item">
+            <a href="/patientclick" class="nav-link"><i class="fa fa-user mr-1"></i> Patient</a>
+          </li>
+          <li class="nav-item">
+            <a href="/contactus" class="nav-link"><i class="fa fa-envelope mr-1"></i> Contact Us</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-  </div>
-
- 
+    </div>
+  </nav>
 
 </body>
-
 </html>
